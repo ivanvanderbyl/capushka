@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Ivan Vanderbyl"]
   s.homepage    = "http://github.com/ivanvanderbyl/capushka"
-  s.summary     = %q{Combines Babushka with Capistrano}
-  s.description = %q{Combines Babushka with Capistrano}
+  s.summary     = %q{Combines Babushka with Capistrano to allow you to run Babushka deps inside your recipes.}
+  s.description = %q{Combines Babushka with Capistrano to allow you to run Babushka deps inside your recipes. See https://github.com/ivanvanderbyl/capushka}
 
   s.rubyforge_project = "capushka"
 
