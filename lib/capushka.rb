@@ -5,22 +5,12 @@ Dir.glob(File.dirname(__FILE__) + '/core_ext/*.rb') { |f| require f }
 module Capushka
   
   def bootstrap!
-    cloud_adapter.execute(instance_name, %Q{bash -c "`wget -O- babushka.me/up/hard`"}, default_opts)
+    run %Q{bash -c "`wget -O- babushka.me/up/hard`"}
   end
-
+  
   def babushka(task_name, vars = {})
     write_vars task_name, vars
-    # # not used yet, but this makes sense. --defaults (or headless) is the default!
-    # if vars == :no_defaults
-    #   cloud_adapter.execute(instance_name, "babushka '#{task_name}'", default_opts)
-    # else
-    #   if !vars.empty?
-    #     write_file(".babushka/vars/#{task_name}", {
-    #       :vars => vars.map_keys(&:to_s).map_values { |v| {:value => v} }
-    #     }.to_yaml)
-    #   end
-    #   cloud_adapter.execute(instance_name, "babushka '#{task_name}' --defaults", default_opts)
-    # end
+    run "babushka '#{task_name}' --defaults"
   end
   
   def write_vars(task_name, vars = {})
