@@ -1,7 +1,10 @@
 require 'capistrano'
 
 module Capushka
-  
+  def run(task, options)
+    puts task
+    p options
+  end
 end
 
 Capistrano.plugin :capushka, Capushka
@@ -12,6 +15,6 @@ configuration = Capistrano::Configuration.respond_to?(:instance) ?
 
 configuration.load do
   def babushka(task, options = {})
-    puts task
+    capushka.run(task, options)
   end
 end
