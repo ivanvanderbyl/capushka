@@ -55,9 +55,7 @@ configuration.load do
     capushka.write_vars(vars)
   end
   
-  namespace :babushka do
-    task :bootstrap do
-      capushka.bootstrap!
-    end
+  task :bootstrap_babushka do
+    capushka.bootstrap!
   end
 end
