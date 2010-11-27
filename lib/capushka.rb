@@ -1,5 +1,7 @@
 require 'capistrano'
 
+Dir.glob(File.dirname(__FILE__) + '/core_ext/*.rb') { |f| require f }
+
 module Capushka
   
   def bootstrap!
