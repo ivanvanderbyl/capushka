@@ -25,22 +25,30 @@ in your config/deploy.rb
     
     namespace :setup do
       task :create_application_user do
+        
         # This is the magic part
         babushka 'benhoskings:user exists', {:username => application}
         
       end
     end
     
-This will create a new user in your application name
+This will run Ben Hoskings' 'user exists' dep, whcih creates a new user in your application name, this is roughly equivalent to logging into each server and running:
+    
+    babushka 'benhoskings:user exists'
+    
+And then entering the username every time it asks.
 
-This does of course assume you have babushka bootstrapped, if not, run the **bootstrap_babushka** task
+This does of course assume you have babushka bootstrapped, if not, run the `bootstrap_babushka` task
 
 TODO:
 ====
 
-- Better error checking and handling
+- Better error checking and handling from Babushka
+- Cleanup vars file when finished?
+- Don't overwrite vars file very time, consider merging options.
 - Cleanup STDOUT from babushka which doesn't play real nice with Capistrano
 - Don't run in parallel?
+- Write tests which work with Capistrano
 
 Contributing
 ============
