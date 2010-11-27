@@ -6,23 +6,24 @@ module Capushka
     cloud_adapter.execute(instance_name, %Q{bash -c "`wget -O- babushka.me/up/hard`"}, default_opts)
   end
 
-  def babushka(taskname, vars = {})
+  def babushka(task_name, vars = {})
+    write_file task_name, vars
     # # not used yet, but this makes sense. --defaults (or headless) is the default!
     # if vars == :no_defaults
-    #   cloud_adapter.execute(instance_name, "babushka '#{taskname}'", default_opts)
+    #   cloud_adapter.execute(instance_name, "babushka '#{task_name}'", default_opts)
     # else
     #   if !vars.empty?
-    #     write_file(".babushka/vars/#{taskname}", {
+    #     write_file(".babushka/vars/#{task_name}", {
     #       :vars => vars.map_keys(&:to_s).map_values { |v| {:value => v} }
     #     }.to_yaml)
     #   end
-    #   cloud_adapter.execute(instance_name, "babushka '#{taskname}' --defaults", default_opts)
+    #   cloud_adapter.execute(instance_name, "babushka '#{task_name}' --defaults", default_opts)
     # end
   end
   
-  def write_vars(vars = {})
+  def write_vars(task_name, vars = {})
     if !vars.empty?
-      write_file(".babushka/vars/#{taskname}", {
+      write_file(".babushka/vars/#{task_name}", {
         :vars => vars.map_keys(&:to_s).map_values { |v| {:value => v} }
       }.to_yaml)
     end
