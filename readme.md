@@ -1,7 +1,7 @@
 Capistrano + Babushka = **Capushka**
 ====================================
 
-This tiny gem does one thing: allows you to run Babushka deps from your Capistrano recipes and pass in variables.
+This tiny gem does one thing: runs Babushka deps on all your servers from your Capistrano recipes and pass in variables.
 
 Portions are based on Dollhouse.
 
@@ -32,7 +32,7 @@ in your config/deploy.rb
       end
     end
     
-This will run Ben Hoskings' 'user exists' dep, whcih creates a new user in your application name, this is roughly equivalent to logging into each server and running:
+This will run Ben Hoskings' 'user exists' dep, which creates a new user in your application name, this is roughly equivalent to logging into each server and running:
     
     babushka 'benhoskings:user exists'
     
