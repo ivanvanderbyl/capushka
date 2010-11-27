@@ -7,7 +7,7 @@ module Capushka
   end
 
   def babushka(task_name, vars = {})
-    write_file task_name, vars
+    write_vars task_name, vars
     # # not used yet, but this makes sense. --defaults (or headless) is the default!
     # if vars == :no_defaults
     #   cloud_adapter.execute(instance_name, "babushka '#{task_name}'", default_opts)
@@ -22,15 +22,15 @@ module Capushka
   end
   
   def write_vars(task_name, vars = {})
-    if !vars.empty?
+    if vars.any?
       write_file(".babushka/vars/#{task_name}", {
         :vars => vars.map_keys(&:to_s).map_values { |v| {:value => v} }
       }.to_yaml)
     end
   end
   
-  def write_file(path, content, options = {})
-    put(content, path, options)
+  def write_file(path, content)
+    put(content, path)
   end
   
   private
@@ -50,10 +50,6 @@ configuration = Capistrano::Configuration.respond_to?(:instance) ?
 configuration.load do
   def babushka(task, vars = {})
     capushka.babushka(task, vars)
-  end
-  
-  def write_vars(vars = {})
-    capushka.write_vars(vars)
   end
   
   task :bootstrap_babushka do
