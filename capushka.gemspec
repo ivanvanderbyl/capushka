@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.authors     = ["Ivan Vanderbyl"]
   s.homepage    = "http://github.com/ivanvanderbyl/capushka"
   s.summary     = %q{Combines Babushka with Capistrano to allow you to run Babushka deps inside your recipes.}
-  s.description = %q{Combines Babushka with Capistrano to allow you to run Babushka deps inside your recipes. See https://github.com/ivanvanderbyl/capushka}
+  s.description = %q{Combines Babushka with Capistrano to allow you to run Babushka deps inside your recipes.}
 
   s.rubyforge_project = "capushka"
 
