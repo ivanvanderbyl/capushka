@@ -10,8 +10,8 @@ module Capushka
   
   def babushka(task_name, vars = {})
     write_vars task_name, vars
-    stdout = capture "babushka '#{task_name}' --defaults", :pty => false, :shell => 'bash'
-    puts stdout
+    stdout = capture("babushka '#{task_name}' --defaults")#, :pty => false, :shell => 'bash'
+    return stdout
   end
   
   def write_vars(task_name, vars = {})
